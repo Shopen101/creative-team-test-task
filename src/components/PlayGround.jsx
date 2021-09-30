@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     }
 });
 
-function PlayGround() {
+export const PlayGround = React.memo(() => {
     const classes = useStyles()
     const dispatch = useDispatch()
 
@@ -139,6 +139,4 @@ function PlayGround() {
 
         </div>
     )
-}
-
-export default PlayGround;
+})
