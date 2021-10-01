@@ -17,7 +17,7 @@ function App() {
 
     return (
         <div className="App">
-            <Container maxWidth="sm">
+            <Container maxWidth="md">
                 <Timer />
                 <PlayGround />
             </Container>
