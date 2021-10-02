@@ -38,14 +38,24 @@ function Timer() {
     }, [seconds, minutes])
 
     useEffect(() => {
-        seconds > 0 && !!intervalOfTime && setTimeFunc()
+        seconds >= 0 && !!intervalOfTime && setTimeFunc()
     }, [seconds])
 
     useEffect(() => {
+        if (gameStart === 'STOP') {
+            clearInterval(intervalOfTime)
+        }
         return () => {
             clearInterval(intervalOfTime)
         }
     }, [intervalOfTime])
+
+    useEffect(() => {
+        if (gameStart === 'PLAYING') {
+            setMinutes(0)
+            setSeconds(0)
+        }
+    }, [gameStart])
 
     return (
         <Box mb={3}>

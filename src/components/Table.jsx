@@ -7,7 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { useSelector } from 'react-redux';
-import { selectStatistics } from './../redux/reducers/selectors';
+import { selectStatistics } from '../redux/reducers/selectors'
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -43,26 +44,26 @@ export default function CustomizedTables() {
     const classes = useStyles();
     const statistics = useSelector(selectStatistics)
 
-    const rows = statistics.map((item, _, arr) => createData(arr.length, item.min, item.sec))
+    const rows = statistics.map((item) => createData(item.trying, item.min, item.sec))
 
     return (
-        <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell align="center">Попытка</StyledTableCell>
-                    <StyledTableCell align="center">Минуты прохождения игры</StyledTableCell>
-                    <StyledTableCell align="center">Секунды прохождения игры</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {rows.map((row, index) => (
-                    <StyledTableRow key={index + new Date().toLocaleDateString()}>
-                        <StyledTableCell align="center">{row.trying}</StyledTableCell>
-                        <StyledTableCell align="center">{row.min}</StyledTableCell>
-                        <StyledTableCell align="center">{row.sec}</StyledTableCell>
-                    </StyledTableRow>
-                ))}
-            </TableBody>
-        </Table>
+            <Table className={classes.table} aria-label="customized table">
+                <TableHead>
+                    <TableRow>
+                        <StyledTableCell align="center">Попытка</StyledTableCell>
+                        <StyledTableCell align="center">Минуты прохождения игры</StyledTableCell>
+                        <StyledTableCell align="center">Секунды прохождения игры</StyledTableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {rows.map((row, index) => (
+                        <StyledTableRow key={index + new Date().toLocaleDateString()}>
+                            <StyledTableCell align="center">{row.trying}</StyledTableCell>
+                            <StyledTableCell align="center">{row.min}</StyledTableCell>
+                            <StyledTableCell align="center">{row.sec}</StyledTableCell>
+                        </StyledTableRow>
+                    ))}
+                </TableBody>
+            </Table>
     );
 }

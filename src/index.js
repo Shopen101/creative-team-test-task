@@ -9,7 +9,7 @@ import store from './redux/store'
 ReactDOM.render(
     <SnackbarProvider maxSnack={3}>
         <Provider store={store}>
-            <App />{' '}
+            <App />
         </Provider>
     </SnackbarProvider>,
     document.getElementById('root'),

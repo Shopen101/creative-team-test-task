@@ -57,12 +57,13 @@ export const PlayGround = React.memo(() => {
                 checkedCard++
             }
         })
-
         if (checkedCard === 36) {
             dispatch(setGameStatus('STOP'))
-            dispatch(setStatistics({ trying: statistics.length, min: finalTime.min, sec: finalTime.sec }))
         }
-    }, [cards, dispatch])
+        if (gameStart === 'STOP') {
+            dispatch(setStatistics({ trying: statistics.length + 1, min: finalTime.min, sec: finalTime.sec }))
+        }
+    }, [cards, finalTime])
 
     useEffect(() => {
         let timeOut = null
